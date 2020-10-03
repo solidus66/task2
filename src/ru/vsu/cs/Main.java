@@ -4,20 +4,21 @@ import java.util.Scanner;
 
 public class Main {
 
-    public static void main(String[] args) {
-        int x = enterCoordinate('x');
-        int y = enterCoordinate('y');
+    public static void main(String[] args)
+    {
+        int x = readCoordinate('x');
+        int y = readCoordinate('y');
 
-        String rightCoordinateQuarter = findRightCoordinateQuarter(x, y);
-        System.out.println("Right coordinate quarter is " + rightCoordinateQuarter);
+        Quarter CoordinateQuarter = findCoordinateQuarter(x, y);
+        System.out.println("Right coordinate quarter is Quarter " + CoordinateQuarter);
     }
 
-    public static int enterCoordinate(char coordinateName)
+    static int readCoordinate(char coordinateName)
     {
         Scanner scanner = new Scanner(System.in);
         System.out.printf("Enter %S: ", coordinateName);
         {
-        return scanner.nextInt();
+            return scanner.nextInt();
         }
     }
 
@@ -41,30 +42,27 @@ public class Main {
         return (x > 0) && (y < 0);
     }
 
-    static String findRightCoordinateQuarter(int x, int y)
+    static Quarter findCoordinateQuarter(int x, int y)
     {
         if (checkCoordinateQuarterI(x, y))
         {
-            return "Quarter I";
+            return Quarter.I;
         }
 
         if (checkCoordinateQuarterII(x, y))
         {
-            return "Quarter II";
+            return Quarter.II;
         }
 
         if (checkCoordinateQuarterIII(x, y))
         {
-            return "Quarter III";
+            return Quarter.III;
         }
 
         if (checkCoordinateQuarterIV(x, y))
         {
-            return "Quarter IV";
+            return Quarter.IV;
         }
-
-        {
-            return findRightCoordinateQuarter(x, y);
-        }
+            return findCoordinateQuarter(x, y);
     }
 }
